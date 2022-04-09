@@ -68,16 +68,16 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
 	public static var ratingStuff:Array<Dynamic> = [
-		['SUCK SUCK SUCK!', 0.2], //From 0% to 19%
-		['NOOOOO', 0.4], //From 20% to 39%
-		['WHY!!!!!', 0.5], //From 40% to 49%
-		['SUCK!', 0.6], //From 50% to 59%
-		['Meh', 0.69], //From 60% to 68%
-		['EMMM', 0.7], //69%
-		['NICE', 0.8], //From 70% to 79%
-		['GOOD', 0.9], //From 80% to 89%
-		['VERY GOOD!', 1], //From 90% to 99%
-		['OMG!!!', 1] //The value on this one isn't used actually, since Perfect is always "1"
+		['UnCorrupted', 0.2], //From 0% to 19%
+		['Try Again', 0.4], //From 20% to 39%
+		['respawnding...', 0.5], //From 40% to 49%
+		['Ok nice ', 0.6], //From 50% to 59%
+		['Good Enough', 0.69], //From 60% to 68%
+		['BLOODY!', 0.7], //69%
+		['GREAT!', 0.8], //From 70% to 79%
+		['EVIL!', 0.9], //From 80% to 89%
+		['MONSTER!', 1], //From 90% to 99%
+		['OVERPOWER!!!!', 1] //The value on this one isn't used actually, since Perfect is always "1"
 	];
 	
 	public var modchartTweens:Map<String, FlxTween> = new Map<String, FlxTween>();
@@ -185,7 +185,7 @@ class PlayState extends MusicBeatState
 	public var camOther:FlxCamera;
 	public var cameraSpeed:Float = 1;
 
-	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
+	var dialogue:Array<String> = ['bruh ilidrag is very sus', 'write a text u bitch'];
 	var dialogueJson:DialogueFile = null;
 
 	var halloweenBG:BGSprite;
@@ -300,9 +300,9 @@ class PlayState extends MusicBeatState
 		// Gameplay settings
 		healthGain = ClientPrefs.getGameplaySetting('healthgain', 1);
 		healthLoss = ClientPrefs.getGameplaySetting('healthloss', 1);
-		instakillOnMiss = ClientPrefs.getGameplaySetting('instakill', false);
+		instakillOnMiss = ClientPrefs.getGameplaySetting('AAAAAAA', false);
 		practiceMode = ClientPrefs.getGameplaySetting('practice', false);
-		cpuControlled = ClientPrefs.getGameplaySetting('botplay', false);
+		cpuControlled = ClientPrefs.getGameplaySetting('true power', false);
 
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
@@ -1012,8 +1012,8 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
-		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "TRUE POWER", 32);
+		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.PINK, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
 		botplayTxt.visible = cpuControlled;
@@ -2189,9 +2189,9 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		if(ratingName == '?') {
-			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingName;
+			scoreTxt.text = 'Corrupted: ' + songScore + ' | Uncorrupted: ' + songMisses + ' | Accuary: ' + ratingName;
 		} else {
-			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingName + ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;//peeps wanted no integer rating
+			scoreTxt.text = 'Corrupted: ' + songScore + ' | Uncorrupted: ' + songMisses + ' | Accuary: ' + ratingName + ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;//peeps wanted no integer rating
 		}
 
 		if(botplayTxt.visible) {
